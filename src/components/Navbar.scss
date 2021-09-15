@@ -1,0 +1,128 @@
+@import "../breakpoints/breakpoints.scss";
+
+:root {
+  --DarkBlue: hsl(233, 26%, 24%);
+  --LimeGreen: hsl(136, 65%, 51%);
+  --BrightCyan: hsl(192, 70%, 51%);
+  --GrayishBlue: hsl(233, 8%, 62%);
+  --LightGrayishBlue: hsl(220, 16%, 96%);
+  --VeryLightGray: hsl(0, 0%, 98%);
+  --White: hsl(0, 0%, 100%);
+}
+
+li,
+a {
+  list-style: none;
+  text-decoration: none;
+}
+
+.navbar-container {
+  background-color: var(--White);
+  height: 70px;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 1rem;
+    z-index: 99;
+
+    .nav {
+      display: none;
+    }
+
+    .nav.active {
+      position: absolute;
+      top: 18vh;
+      left: 8%;
+      background-color: var(--White);
+      width: 85%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      place-items: center;
+      padding: 1rem 0;
+      box-shadow: 100px 100px 100px 100px rgba(0, 0, 0, 0.5);
+
+      li {
+        margin: 0.8rem 0;
+
+        a {
+          color: var(--DarkBlue);
+        }
+      }
+    }
+
+    .btn-hamburger {
+      background-color: var(--VeryLightGray);
+      border: none;
+    }
+
+    .btn-invite {
+      display: none;
+    }
+  }
+
+  @include media(">800px") {
+    .navbar {
+      max-width: 80%;
+      margin: 0 auto;
+      .nav {
+        // display: block;
+        position: static;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 400px;
+        max-width: 500px;
+        height: 100%;
+
+        li {
+          height: 100%;
+          margin: 0 10px;
+
+          &:hover {
+            border-bottom: 4px solid var(--BrightCyan);
+            cursor: pointer;
+          }
+        }
+
+        a {
+          display: flex;
+          margin: 1.5rem 0;
+          color: var(--GrayishBlue);
+          font-size: 15px;
+        }
+      }
+      .btn-invite {
+        display: block;
+        color: #fff;
+        box-shadow: -10px -5px -5px #fff;
+        border-radius: 45px;
+        border: none;
+        cursor: pointer;
+        padding: 1rem 2rem;
+        background: linear-gradient(
+          to right,
+          var(--LimeGreen),
+          var(--BrightCyan)
+        );
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .btn-hamburger {
+        display: none;
+      }
+    }
+  }
+}
